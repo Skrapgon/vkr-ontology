@@ -1,0 +1,177 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.geometry.Insets?>
+<?import javafx.scene.canvas.Canvas?>
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.ComboBox?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.ListView?>
+<?import javafx.scene.control.Separator?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.layout.ColumnConstraints?>
+<?import javafx.scene.layout.GridPane?>
+<?import javafx.scene.layout.HBox?>
+<?import javafx.scene.layout.RowConstraints?>
+<?import javafx.scene.layout.VBox?>
+<?import javafx.scene.shape.Circle?>
+<?import javafx.scene.shape.Polygon?>
+<?import javafx.scene.shape.Rectangle?>
+
+<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="800.0" prefWidth="1400.0" xmlns="http://javafx.com/javafx/19" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.owltest.views.MainWindowController">
+   <children>
+      <AnchorPane layoutX="1290.0" layoutY="613.0" maxHeight="-Infinity" maxWidth="-Infinity" prefHeight="130.0" prefWidth="360.0" style="-fx-border-width: 1; -fx-border-color: #000000;" AnchorPane.bottomAnchor="0.0" AnchorPane.rightAnchor="0.0">
+         <children>
+            <VBox layoutX="3.0" layoutY="5.0" prefHeight="130.0" prefWidth="360.0">
+               <children>
+                  <HBox alignment="CENTER" prefHeight="30.0" prefWidth="360.0">
+                     <children>
+                        <Separator orientation="VERTICAL" prefHeight="82.0" prefWidth="11.0" visible="false" />
+                        <Label prefHeight="20.0" prefWidth="200.0" text="Процент" />
+                        <Separator orientation="VERTICAL" prefHeight="82.0" prefWidth="11.0" visible="false" />
+                        <ComboBox fx:id="percentageCont" prefHeight="25.0" prefWidth="90.0" />
+                     </children>
+                  </HBox>
+                  <HBox alignment="CENTER" prefHeight="30.0" prefWidth="360.0">
+                     <children>
+                        <Separator orientation="VERTICAL" prefHeight="82.0" prefWidth="11.0" visible="false" />
+                        <Label prefHeight="20.0" prefWidth="200.0" text="Построить маршруты" />
+                        <Separator orientation="VERTICAL" prefHeight="82.0" prefWidth="11.0" visible="false" />
+                        <Button fx:id="routeFinding" mnemonicParsing="false" onAction="#handleFindRoutes" prefHeight="25.0" prefWidth="90.0" text="Построить" />
+                     </children>
+                  </HBox>
+                  <HBox alignment="CENTER" prefHeight="30.0" prefWidth="360.0">
+                     <children>
+                        <Separator orientation="VERTICAL" prefHeight="82.0" prefWidth="11.0" visible="false" />
+                        <Label prefHeight="20.0" prefWidth="200.0" text="Рассчитать приоритет складов" />
+                        <Separator orientation="VERTICAL" prefHeight="82.0" prefWidth="11.0" visible="false" />
+                        <Button fx:id="priorityProcessing" mnemonicParsing="false" onAction="#handleProcessOntology" prefHeight="25.0" prefWidth="90.0" text="Рассчитать" />
+                     </children>
+                  </HBox>
+                  <HBox alignment="CENTER" prefHeight="30.0" prefWidth="360.0">
+                     <children>
+                        <Separator orientation="VERTICAL" prefHeight="82.0" prefWidth="11.0" visible="false" />
+                        <Label prefHeight="20.0" prefWidth="200.0" text="Сохранить онтологию" />
+                        <Separator orientation="VERTICAL" prefHeight="82.0" prefWidth="11.0" visible="false" />
+                        <Button fx:id="ontologySaving" mnemonicParsing="false" onAction="#handleSaveOntology" prefHeight="25.0" prefWidth="90.0" text="Сохранить" />
+                     </children>
+                  </HBox>
+               </children>
+            </VBox>
+         </children>
+         <opaqueInsets>
+            <Insets top="1.0" />
+         </opaqueInsets>
+      </AnchorPane>
+      <AnchorPane layoutX="937.0" prefHeight="520.0" prefWidth="295.0" style="-fx-border-width: 1; -fx-border-color: #000000;" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
+         <children>
+            <VBox alignment="TOP_CENTER" layoutX="2.0" layoutY="2.0" prefHeight="560.0" prefWidth="295.0" AnchorPane.bottomAnchor="1.0" AnchorPane.leftAnchor="2.0" AnchorPane.rightAnchor="2.0" AnchorPane.topAnchor="2.0">
+               <children>
+                  <HBox alignment="CENTER" prefHeight="30.0" prefWidth="290.0">
+                     <children>
+                        <Label prefHeight="20.0" prefWidth="200.0" text="Загрузить дорожную сеть" />
+                        <Button fx:id="graphLoading" mnemonicParsing="false" onAction="#handleLoadGraph" prefHeight="25.0" prefWidth="75.0" text="Загрузить" />
+                     </children>
+                  </HBox>
+                  <HBox alignment="CENTER" prefHeight="30.0" prefWidth="290.0">
+                     <children>
+                        <Label prefHeight="20.0" prefWidth="200.0" text="Загрузить информацию о факторах" />
+                        <Button fx:id="factorsLoading" mnemonicParsing="false" onAction="#handleLoadFactors" prefHeight="25.0" prefWidth="75.0" text="Загрузить" />
+                     </children>
+                  </HBox>
+                  <HBox alignment="CENTER" prefHeight="30.0" prefWidth="290.0">
+                     <children>
+                        <Label prefHeight="20.0" prefWidth="200.0" text="Загрузить транспорт и груз" />
+                        <Button fx:id="carsLoading" mnemonicParsing="false" onAction="#handleLoadOntology" prefHeight="25.0" prefWidth="75.0" text="Загрузить" />
+                     </children>
+                  </HBox>
+                  <HBox alignment="CENTER" prefHeight="30.0" prefWidth="290.0">
+                     <children>
+                        <Label prefHeight="20.0" prefWidth="200.0" text="Загрузить правила" />
+                        <Button fx:id="rulesLoading" mnemonicParsing="false" onAction="#handleLoadRules" prefHeight="25.0" prefWidth="75.0" text="Загрузить" />
+                     </children>
+                  </HBox>
+                  <HBox prefHeight="20.0" prefWidth="260.0">
+                     <children>
+                        <Rectangle arcHeight="5.0" arcWidth="5.0" fill="DODGERBLUE" height="15.0" rotate="45.0" stroke="BLACK" strokeType="INSIDE" width="15.0" />
+                        <Label prefHeight="20.0" prefWidth="240.0" text="Список бригад:" />
+                     </children>
+                  </HBox>
+                  <ListView fx:id="brigadeList" prefHeight="110.0" prefWidth="260.0" />
+                  <HBox prefHeight="20.0" prefWidth="260.0">
+                     <children>
+                        <Polygon fill="#24c92c" points="-7.295608520507812E-5, -38.0, 25.199928283691406, -48.0, 0.0, -60.0" smooth="false" stroke="BLACK" strokeType="INSIDE" />
+                        <Label prefHeight="20.0" prefWidth="240.0" text="Список складов:" />
+                     </children>
+                  </HBox>
+                  <ListView fx:id="warehouseList" prefHeight="110.0" prefWidth="260.0" />
+                  <HBox prefHeight="20.0" prefWidth="260.0">
+                     <children>
+                        <Circle fill="#ff1f1f" radius="10.0" stroke="BLACK" strokeType="INSIDE" />
+                        <Label prefHeight="20.0" prefWidth="240.0" text="Список жд станций:" />
+                     </children>
+                  </HBox>
+                  <ListView fx:id="railwayList" prefHeight="110.0" prefWidth="260.0" />
+               </children>
+            </VBox>
+         </children>
+      </AnchorPane>
+      <AnchorPane fx:id="nodeEditingPanel" layoutX="1043.0" layoutY="525.0" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="130.0" prefWidth="310.0" style="-fx-border-width: 1; -fx-border-color: #000000;" visible="false" AnchorPane.rightAnchor="0.0">
+         <children>
+            <GridPane alignment="BASELINE_LEFT" layoutX="13.0" layoutY="2.0" prefHeight="128.0" prefWidth="353.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="12.0" AnchorPane.rightAnchor="1.0" AnchorPane.topAnchor="1.0">
+               <columnConstraints>
+                  <ColumnConstraints halignment="LEFT" hgrow="SOMETIMES" maxWidth="164.199951171875" minWidth="10.0" prefWidth="137.3999923706055" />
+                  <ColumnConstraints hgrow="SOMETIMES" maxWidth="257.80005645751953" minWidth="10.0" prefWidth="196.6000076293945" />
+               </columnConstraints>
+               <rowConstraints>
+                  <RowConstraints maxHeight="35.0" minHeight="10.0" prefHeight="35.0" vgrow="SOMETIMES" />
+                  <RowConstraints maxHeight="35.0" minHeight="10.0" prefHeight="35.0" vgrow="SOMETIMES" />
+                  <RowConstraints maxHeight="35.0" minHeight="10.0" prefHeight="35.0" vgrow="SOMETIMES" />
+                  <RowConstraints maxHeight="35.0" minHeight="10.0" prefHeight="35.0" vgrow="SOMETIMES" />
+               </rowConstraints>
+               <children>
+                  <Label prefHeight="20.0" prefWidth="120.0" text="Тип объекта:" />
+                  <Label prefHeight="20.0" prefWidth="120.0" text="Наименование:" GridPane.rowIndex="1" />
+                  <ComboBox fx:id="nodeTypes" onAction="#handleChangeType" prefHeight="26.0" prefWidth="184.0" promptText="Выберите тип объекта" GridPane.columnIndex="1" />
+                  <ComboBox fx:id="nodeNames" prefHeight="26.0" prefWidth="184.0" promptText="Выберите наименование объекта" GridPane.columnIndex="1" GridPane.rowIndex="1" />
+               </children>
+               <padding>
+                  <Insets left="15.0" right="15.0" />
+               </padding>
+            </GridPane>
+            <Button fx:id="nodePropertiesSaving" layoutX="14.0" layoutY="183.0" mnemonicParsing="false" onAction="#handleSaveNodeProperties" text="Сохранить" AnchorPane.bottomAnchor="5.0" AnchorPane.leftAnchor="5.0" />
+            <Button fx:id="closeEditingPanelButton" layoutX="271.0" layoutY="183.0" mnemonicParsing="false" onAction="#handleCloseNodeEditMenu" text="Закрыть" AnchorPane.bottomAnchor="5.0" AnchorPane.rightAnchor="5.0" />
+         </children>
+         <opaqueInsets>
+            <Insets />
+         </opaqueInsets>
+      </AnchorPane>
+      <AnchorPane prefHeight="200.0" prefWidth="200.0" style="-fx-border-width: 1; -fx-border-color: #000000;">
+         <children>
+            <Canvas fx:id="canvas" height="700.0" onMouseClicked="#handleShowNodeEditMenu" width="1000.0" />
+         </children>
+      </AnchorPane>
+      <AnchorPane layoutY="709.0" prefHeight="90.0" prefWidth="600.0" style="-fx-border-width: 1; -fx-border-color: #000000;">
+         <children>
+            <HBox prefHeight="90.0" prefWidth="600.0">
+               <children>
+                  <VBox prefHeight="90.0" prefWidth="200.0">
+                     <children>
+                        <Label alignment="CENTER" prefHeight="60.0" prefWidth="600.0" text="Лучшее расположение" textAlignment="CENTER" wrapText="true" />
+                        <Label alignment="CENTER" prefHeight="30.0" prefWidth="600.0" text="Приоритет складов" textAlignment="CENTER" wrapText="true" />
+                     </children>
+                  </VBox>
+                  <VBox prefHeight="90.0" prefWidth="500.0">
+                     <children>
+                        <Label fx:id="bestWarehouses" alignment="CENTER" prefHeight="60.0" prefWidth="600.0" textAlignment="CENTER" wrapText="true" />
+                        <Label fx:id="bestPrioriry" alignment="CENTER" prefHeight="30.0" prefWidth="600.0" textAlignment="CENTER" wrapText="true" />
+                     </children>
+                  </VBox>
+               </children>
+            </HBox>
+         </children>
+      </AnchorPane>
+   </children>
+   <opaqueInsets>
+      <Insets />
+   </opaqueInsets>
+</AnchorPane>
